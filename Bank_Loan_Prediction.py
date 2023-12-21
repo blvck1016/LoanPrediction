@@ -11,10 +11,10 @@ with open('./Model/ML_Model.pkl', 'rb') as model_file:
 # Function to create a MySQL connection
 def create_connection():
     # Replace these values with your MySQL connection details
-    mysql_host = 'projet.mysql.database.azure.com'
-    mysql_user = 'med@projet'
-    mysql_password = 'root@2002'
-    mysql_db = 'your_mysql_database_name'
+    mysql_host = 'medproject.mysql.database.azure.com'
+    mysql_user = 'ifmpwbxopa@medproject'
+    mysql_password = '1VRSAF7B6311Z1TV$'
+    mysql_db = 'apploan-database'
 
     return mysql.connector.connect(
         host=mysql_host,
