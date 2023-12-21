@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import pickle
 import mysql.connector
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
 
 # Load the model
@@ -44,6 +45,18 @@ def insert_loan_data(connection, account_no, fn, prediction):
         VALUES (%s, %s, %s)
     """, (account_no, fn, prediction))
     connection.commit()
+    
+    # Function to upload a file to Azure Blob Storage
+def upload_to_blob_storage(file_content, file_name):
+    connection_string = 'DefaultEndpointsProtocol=https;AccountName=datamed;AccountKey=Tf/4H6710/Z6qrmNycf3X6Y6tZ59qWb3ILNrJYxPIfIJwDMX+SRdJ469pmy1wJey23G3nLL0mnRU+AStM/VznQ==;EndpointSuffix=core.windows.net'
+    container_name = 'blob'
+
+    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+    container_client = blob_service_client.get_container_client(container_name)
+
+    # Upload file
+    blob_client = container_client.get_blob_client(file_name)
+    blob_client.upload_blob(file_content)
 
 def run():
     # Apply styling with HTML and CSS
