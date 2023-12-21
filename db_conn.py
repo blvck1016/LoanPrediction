@@ -4,13 +4,13 @@ import mysql.connector
 
 def create_connection():
     # Replace these values with your Azure MySQL connection details
-    mysql_host = 'projet.mysql.database.azure.com'
+    mysql_host = 'medproject.mysql.database.azure.com'
     mysql_port = 3306 
-    mysql_user = 'med@projet'
-    mysql_password = 'root@2002'
-    mysql_db = 'projet'
+    mysql_user = 'ifmpwbxopa@medproject'
+    mysql_password = '1VRSAF7B6311Z1TV$'
+    mysql_db = 'apploan-database'
 
-    return mysql.connector.connect(
+return mysql.connector.connect(
         host=mysql_host,
         port=mysql_port,
         user=mysql_user,
