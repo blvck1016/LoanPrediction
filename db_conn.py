@@ -3,7 +3,7 @@
 import mysql.connector
 
 def create_connection():
-    # Replace these values with your Azure MySQL connection details
+   
     mysql_host = 'medproject.mysql.database.azure.com'
     mysql_port = 3306 
     mysql_user = 'ifmpwbxopa@medproject'
