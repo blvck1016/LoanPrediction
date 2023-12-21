@@ -1,5 +1,3 @@
-# db_utils.py
-
 import mysql.connector
 
 def create_connection():
