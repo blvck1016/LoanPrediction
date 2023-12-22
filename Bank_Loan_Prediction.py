@@ -3,15 +3,30 @@ from PIL import Image
 import pickle
 import mysql.connector
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+
 
 
 # Load the model
 with open('./Model/ML_Model.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
 
+def get_key_vault_secret(https://keykey.managedhsm.azure.net, keykey):
+    credential = DefaultAzureCredential()
+    secret_client = SecretClient(vault_url=vault_url, credential=credential)
+
+    try:
+        secret = secret_client.get_secret(secret_name)
+        return secret.value
+    except Exception as e:
+        print(f"Error retrieving secret '{secret_name}' from Key Vault: {e}")
+        return None
+
+
 # Function to create a MySQL connection
 def create_connection():
-    # Replace these values with your MySQL connection details
+    
     mysql_host = 'medproject.mysql.database.azure.com'
     mysql_user = 'ifmpwbxopa@medproject'
     mysql_password = '1VRSAF7B6311Z1TV$'
